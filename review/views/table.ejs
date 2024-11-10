@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Blogs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+ 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+ 
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+ 
+        th {
+            background-color: #f2f2f2;
+        }
+ 
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+ 
+        tr:hover {
+            background-color: #ddd;
+        }
+ 
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+ 
+        #search {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User's Blogs</h1>
+    <input type="text" id="search" placeholder="Search by title...">
+    <table id="blogTable">
+        <tr>
+            <th>Title</th>
+            <th>URL</th>
+            <th>Created by</th>
+            <th>Created at</th>
+            <th>Modified by</th>
+            <th>Modified at</th>
+            <th>Status</th>
+        </tr>
+        <% blogs.forEach(blog => { %>
+            <tr>
+                <td><%= blog.title %></td>
+                <td><a href="/blog/<%= blog.title %>">View</a></td>
+                <td><%= blog.author %></td>
+                <td><%= blog.createdAt %></td>
+                <td><%= blog.author %></td>
+                <td><%= blog.modifiedAt %></td>
+                <td><%= blog.status %></td>
+            </tr>
+        <% }); %>
+    </table>
+ 
+    <script>
+        document.getElementById("search").addEventListener("keyup", function() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("blogTable");
+            tr = table.getElementsByTagName("tr");
+ 
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

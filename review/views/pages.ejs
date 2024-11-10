@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Pages</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Font Awesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS for sidebar */
+   
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        } */
+ 
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+ 
+        table {
+            width: 95%;
+            border-collapse: collapse;
+        }
+ 
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+ 
+        th {
+            background-color: #f2f2f2;
+        }
+ 
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+ 
+        tr:hover {
+            background-color: #ddd;
+        }
+ 
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+ 
+        #search {
+            margin-bottom: 20px;
+        }
+   
+    .sidebar {
+      height: 100%;
+      width: 80px; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      padding-top: 20px;
+      /* overflow-x: hidden; */
+    }
+    .sidebar img {
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      display: block;
+    }
+    .sidebar img:hover {
+      background-color:rgb(229, 234, 242);;
+    }
+    .bottom-icons {
+      position: absolute;
+      bottom: 20px;
+      left: 10px;
+    }
+    .bottom-icons img {
+      margin-bottom: 10px;
+    }
+    .bell{
+        display: flex;
+        align-items: center;
+        padding:20px ;
+    }
+    .header{
+        margin-left: 80px;
+        width: 100vw;
+        height: auto;
+    }
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 60px;
+      }
+      .sidebar img {
+        padding: 8px;
+      }
+      .bottom-icons img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <div class="d-flex  overflow-hidden">
+        <div class="justify-content-between sidebar border border-thick">
+            <!-- Icons at the top -->
+            <img class="m-2" src="logo.svg" alt=""> 
+            <img class="m-2"src="icons/dashboard.svg" alt="">
+            <img class="m-2"src="icons/library.svg" alt="">
+            <!-- Icons at the bottom -->
+            <div class="bottom-icons ">
+              <img class="m-2" src="icons/bell.svg">
+              <img class="" src="icons/avatar.svg">
+            </div>
+          </div>
+          <div>
+            <div class="border header">
+                <nav class="ms-3 navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="#">Pages</a>
+                    <button type="button" class="mt-3 btn btn-primary px-4" style="margin-left: 80%;">+ Add pages</button>
+                   
+                  </nav>
+                  <p class="ms-3 fw-lighter fw-small">Create and publish pages</p>
+                 
+              </div>
+              
+              <div class="mt-3 header p-4">
+                <input type="text" id="search" placeholder="Search by title...">
+                <table id="blogTable">
+                    <tr>
+                        <th>Title</th>
+                        <th>URL</th>
+                        <th>Created by</th>
+                        <th>Created at</th>
+                        <th>Modified by</th>
+                        <th>Modified at</th>
+                        <th>Status</th>
+                    </tr>
+                    <% blogs.forEach(blog => { %>
+                        <tr>
+                            <td><%= blog.title %>  <a href="/edit/<%= blog._id %>">Edit</a>
+                              <form action="/delete/<%= blog._id %>" method="post">
+                                <button type="submit">Delete</button>
+                            </form></td>
+                            <td><a href="/blog/<%= blog.title %>">View</a></td>
+                            <td><%= blog.author %></td>
+                            <td><%= blog.created_at %></td>
+                            <td><%= blog.author %></td>
+                            <td><%= blog.modified_at %></td>
+                            <td><%= blog.status %></td>
+                         
+                        </tr>
+                    <% }); %>
+                </table>
+             
+                <script>
+                    document.getElementById("search").addEventListener("keyup", function() {
+                        var input, filter, table, tr, td, i, txtValue;
+                        input = document.getElementById("search");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("blogTable");
+                        tr = table.getElementsByTagName("tr");
+             
+                        for (i = 1; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0];
+                            if (td) {
+                                txtValue = td.textContent || td.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    tr[i].style.display = "none";
+                                }
+                            }
+                        }
+                    });
+                </script>
+             
+          </div>
+          
+         
+    </div>
+
+
+
+
+<!-- Bootstrap JS and Font Awesome JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+</body>
+</html>

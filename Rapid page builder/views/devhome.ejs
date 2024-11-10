@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog</title>
+    <link rel="stylesheet" href="/home.css"> <!-- Assuming you have a CSS file named styles.css in the public directory -->
+</head>
+<body>
+    <h1>Create a New Blog</h1>
+    <form action="/blog" method="POST">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <p>Generated URL: /blog/<span id="urlPlaceholder"></span></p>
+        <label for="subtitle">Subtitle:</label><br>
+        <input type="text" id="subtitle" name="subtitle"><br>
+        <label for="body">Body:</label><br>
+        <textarea id="body" name="body" rows="4" required></textarea><br>
+        <label for="author">Author:</label><br>
+        <input type="text" id="author" name="author"><br>
+        <button type="submit">Publish</button>
+    </form>
+    <script>
+        // JavaScript code to update the URL placeholder based on the title input
+        document.getElementById('title').addEventListener('input', function() {
+            const title = this.value;
+            const urlPlaceholder = document.getElementById('urlPlaceholder');
+            // Use slugify library to generate URL-friendly slug
+            const slug = title.trim().toLowerCase().replace(/\s+/g, '-');
+            urlPlaceholder.textContent = slug;
+        });
+    </script>
+</body>
+</html>
