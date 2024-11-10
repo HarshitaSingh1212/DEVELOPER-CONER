@@ -1,0 +1,79 @@
+signup
+{
+    "tenant_name":"TESLA",
+    "employee_name":"harshita",
+    "employee_email":"harshita@gmail.com",
+    "employee_password":"harshita"
+}
+
+addusers
+{
+    "employee_name":"swati",
+    "employee_email":"singhharshita852@gmail.com",
+    "permissions":["admin"]
+}
+
+login
+{
+   "employee_email":"harshita@gmail.com", 
+}
+
+set-password
+{
+    "employee_password":"12345678"
+}
+
+get-tenant
+{
+    "tenant_id" : 1
+}
+
+patch-employee/bc4a5d29-472d-478d-8f31-58654a5f6b3d
+{
+    "employee_name":"swati",
+    "employee_email":"singhharshita852@gmail.com",
+    "permissions":["create channel","create product"]
+}
+
+get-tenant/password
+{
+    "employee_email":"harshita@gmail.com 
+}
+
+channel
+{
+  "channel_name":"hindi",
+  "channel_code":"hi"
+}
+
+channel
+{
+    "channel_name":"france",
+    "channel_code":"fr"
+}
+
+product
+  {
+  "image_url":"https://plus.unsplash.com/premium_photo-1678112180202-cd950dbe5a35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXJsfGVufDB8fDB8fHww",
+  "price":2000,
+  "product_name":"xbox-4",
+  "product_type":"digital",
+  "product_description":"most amazing so far"
+ }   
+
+product
+{
+   "image_url":"https://plus.unsplash.com/premium_photo-1678112180202-cd950dbe5a35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXJsfGVufDB8fDB8fHww",
+  "price":2000,
+  "product_name":"xbox-8",
+  "product_type":"digital", 
+}
+
+product/1/fr
+{
+  "image_url":"https://plus.unsplash.com/premium_photo-1678112180202-cd950dbe5a35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXJsfGVufDB8fDB8fHww",
+  "price":2000,
+  "product_name":"xbox-4-in-france",
+  "product_type":"digital",
+  "product_description":"most amazing so far"
+ } 

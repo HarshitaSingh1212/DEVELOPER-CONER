@@ -1,0 +1,4 @@
+path : client/.dockerignore
+
+node_modules
+npm-debug.log

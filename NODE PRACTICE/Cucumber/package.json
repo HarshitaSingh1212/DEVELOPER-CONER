@@ -1,0 +1,16 @@
+{
+  "name": "cucumber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@cucumber/cucumber": "^8.2.1",
+    "chai": "^4.3.6",
+    "sinon": "^14.0.0"
+  }
+}

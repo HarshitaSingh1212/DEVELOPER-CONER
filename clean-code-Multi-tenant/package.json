@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "cloudinary": "^2.2.0",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.1",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.9.7",
+    "nodemailer": "^6.9.13",
+    "sequelize": "^6.37.3",
+    "umzug": "^3.8.0"
+  },
+  "name": "exercie-4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.2.1",
+    "chai": "^4.3.6",
+    "sinon": "^14.0.0"
+  }
+}
